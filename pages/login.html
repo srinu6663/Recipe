@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Food Corpus (Merged)</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🍽️ Food Corpus Login</h1>
+        <p>Sign in to share your food knowledge</p>
+      </header>
+
+      <main>
+        <div class="form-container">
+          <form id="login-form">
+            <div id="alertContainer"></div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="+91XXXXXXXXXX"
+                required
+              />
+              <small style="color: #666"
+                >Include country code (e.g., +91...)</small
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary" style="width: 100%">
+                <span id="loginText">Login</span>
+                <span id="loginLoading" style="display: none"
+                  >Logging in...</span
+                >
+              </button>
+            </div>
+
+            <div class="form-group" style="text-align: center">
+              <a
+                href="register.html"
+                style="color: #667eea; text-decoration: none"
+                >Don't have an account? Register here</a
+              >
+            </div>
+
+            <div class="form-group" style="text-align: center">
+              <a href="../index.html" style="color: #666; text-decoration: none"
+                >← Back to Home</a
+              >
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+
+    <script src="../js/merged-auth.js"></script>
+    <script>
+      document
+        .getElementById("login-form")
+        .addEventListener("submit", handleLogin);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard - Food Corpus (Merged)</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🍽️ Food Corpus Dashboard</h1>
+        <p>Manage your food knowledge contributions</p>
+      </header>
+
+      <main>
+        <div class="dashboard-header">
+          <div class="user-info">
+            <h2 id="username-display">Welcome back!</h2>
+          </div>
+          <div class="nav-buttons">
+            <a href="upload.html" class="btn btn-primary">📤 Upload Content</a>
+            <button id="logout-btn" class="btn btn-danger">🚪 Logout</button>
+          </div>
+        </div>
+
+        <div id="alertContainer"></div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">📊</div>
+            <div class="stat-content">
+              <h3 id="totalContributions">0</h3>
+              <p>Total Contributions</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🎤</div>
+            <div class="stat-content">
+              <h3 id="audioCount">0</h3>
+              <p>Audio Files</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">📹</div>
+            <div class="stat-content">
+              <h3 id="videoCount">0</h3>
+              <p>Video Files</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🖼️</div>
+            <div class="stat-content">
+              <h3 id="imageCount">0</h3>
+              <p>Images</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">📝</div>
+            <div class="stat-content">
+              <h3 id="textCount">0</h3>
+              <p>Text Files</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contributions-section">
+          <div class="section-header">
+            <h2>🍽️ Your Corpus Contributions</h2>
+            <p>Explore your culinary knowledge shared with the community</p>
+          </div>
+
+          <div id="content-list" class="contributions-grid">
+            <div class="loading-message">
+              <div class="loading-icon">🔄</div>
+              <h4>Loading Your Contributions...</h4>
+              <p>Fetching your food knowledge uploads from the corpus</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../js/merged-auth.js"></script>
+    <script src="../js/merged-dashboard.js"></script>
+  </body>
+</html>

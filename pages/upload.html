@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload - Food Corpus (Merged)</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🍽️ Upload Food Content</h1>
+        <p>Share your recipes, cooking techniques, and food knowledge</p>
+      </header>
+
+      <main>
+        <div class="dashboard-header">
+          <div class="user-info">
+            <h2>📤 Upload New Content</h2>
+            <p>Contribute to the Telugu food corpus</p>
+          </div>
+          <div class="nav-buttons">
+            <a href="dashboard.html" class="btn btn-secondary">📊 Dashboard</a>
+            <button id="logout-btn" class="btn btn-danger">🚪 Logout</button>
+          </div>
+        </div>
+
+        <div class="form-container" style="max-width: 800px">
+          <div class="media-type-selector">
+            <h3>Choose Content Type</h3>
+            <div class="media-grid">
+              <div
+                class="media-option"
+                data-type="image"
+                onclick="selectMediaType('image')"
+              >
+                <div class="media-icon">🖼️</div>
+                <div class="media-title">Images</div>
+                <div class="media-desc">
+                  Upload food photos, recipes, cooking steps
+                </div>
+              </div>
+              <div
+                class="media-option"
+                data-type="audio"
+                onclick="selectMediaType('audio')"
+              >
+                <div class="media-icon">🎤</div>
+                <div class="media-title">Audio</div>
+                <div class="media-desc">
+                  Record recipes, cooking instructions
+                </div>
+              </div>
+              <div
+                class="media-option"
+                data-type="video"
+                onclick="selectMediaType('video')"
+              >
+                <div class="media-icon">📹</div>
+                <div class="media-title">Video</div>
+                <div class="media-desc">Cooking demonstrations, tutorials</div>
+              </div>
+              <div
+                class="media-option"
+                data-type="text"
+                onclick="selectMediaType('text')"
+              >
+                <div class="media-icon">📝</div>
+                <div class="media-title">Text</div>
+                <div class="media-desc">Written recipes, food stories</div>
+              </div>
+            </div>
+          </div>
+
+          <form id="uploadForm" style="display: none">
+            <div id="alertContainer"></div>
+            <div
+              class="form-group"
+              style="
+                background: #f8fafc;
+                border: 1px solid #e2e8f0;
+                border-radius: 8px;
+                padding: 12px;
+                margin-bottom: 16px;
+                color: #334155;
+              "
+            >
+              <strong>Category:</strong> Food (fixed)
+            </div>
+
+            <div class="selected-type-info">
+              <div class="selected-type-badge">
+                <span id="selectedTypeIcon">📝</span>
+                <span id="selectedTypeText">Text Content</span>
+                <button
+                  type="button"
+                  onclick="resetMediaType()"
+                  class="change-type-btn"
+                >
+                  Change Type
+                </button>
+              </div>
+            </div>
+
+            <div class="upload-area" id="uploadArea">
+              <div class="upload-icon">📁</div>
+              <div class="upload-text">
+                Click to select files or drag and drop
+              </div>
+              <div class="upload-subtext" id="uploadSubtext">
+                Supports: Audio (mp3, wav), Video (mp4, avi), Images (jpg, jpeg,
+                png), Text (txt, doc)
+              </div>
+              <input
+                type="file"
+                id="fileInput"
+                style="display: none"
+                accept="*/*"
+              />
+            </div>
+
+            <div id="fileInfo" class="file-info" style="display: none">
+              <h4>Selected File:</h4>
+              <p id="fileName"></p>
+              <p id="fileSize"></p>
+              <p id="fileType"></p>
+            </div>
+
+            <div id="progressContainer" style="display: none">
+              <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+              <p id="progressText">0%</p>
+            </div>
+
+            <input type="hidden" id="mediaType" name="mediaType" value="text" />
+
+            <div class="form-group">
+              <label for="title">Title: *</label>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                placeholder="e.g., Telugu Garelu Recipe"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="description">Description: *</label>
+              <textarea
+                id="description"
+                name="description"
+                placeholder="e.g., Audio explanation and steps in Telugu for making Garelu."
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="language">Language: *</label>
+              <select id="language" name="language" required>
+                <option value="">Select Language</option>
+                <option value="telugu">Telugu</option>
+                <option value="hindi">Hindi</option>
+                <option value="tamil">Tamil</option>
+                <option value="kannada">Kannada</option>
+                <option value="malayalam">Malayalam</option>
+                <option value="marathi">Marathi</option>
+                <option value="gujarati">Gujarati</option>
+                <option value="bengali">Bengali</option>
+                <option value="punjabi">Punjabi</option>
+                <option value="assamese">Assamese</option>
+                <option value="odia">Odia</option>
+                <option value="urdu">Urdu</option>
+                <option value="sanskrit">Sanskrit</option>
+                <option value="kashmiri">Kashmiri</option>
+                <option value="sindhi">Sindhi</option>
+                <option value="nepali">Nepali</option>
+                <option value="konkani">Konkani</option>
+                <option value="meitei">Meitei</option>
+                <option value="bodo">Bodo</option>
+                <option value="santali">Santali</option>
+                <option value="maithili">Maithili</option>
+                <option value="dogri">Dogri</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="releaseRights">Release Rights: *</label>
+              <select id="releaseRights" name="releaseRights" required>
+                <option value="">Select Release Rights</option>
+                <option value="creator">
+                  Creator - Original content created by me
+                </option>
+                <option value="family_or_friend">
+                  Family or Friend - Content from family/friends
+                </option>
+                <option value="downloaded">
+                  Downloaded - Content from internet/other sources
+                </option>
+                <option value="NA">Not Applicable</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="tags">Tags (optional):</label>
+              <input
+                type="text"
+                id="tags"
+                name="tags"
+                placeholder="e.g., traditional, breakfast, south-indian"
+              />
+              <small style="color: #666">Separate tags with commas</small>
+            </div>
+
+            <div class="form-group">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                style="width: 100%"
+                id="uploadBtn"
+              >
+                <span id="uploadText">📤 Upload Content</span>
+                <span id="uploadLoading" style="display: none"
+                  >⏳ Uploading...</span
+                >
+              </button>
+            </div>
+
+            <div class="form-group" style="text-align: center">
+              <a
+                href="dashboard.html"
+                style="color: #666; text-decoration: none"
+                >← Back to Dashboard</a
+              >
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+
+    <script src="../js/merged-auth.js"></script>
+    <script src="../js/merged-upload.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        checkAuthentication();
+        initializeUpload();
+        const logoutBtn = document.getElementById("logout-btn");
+        if (logoutBtn) logoutBtn.addEventListener("click", logout);
+      });
+    </script>
+  </body>
+</html>
