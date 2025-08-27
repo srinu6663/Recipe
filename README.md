@@ -1,9 +1,6 @@
-# Food Corpus (Merged UI + API)
+# Food Corpus
 
 This project combines the Food Corpus UI with the API logic/endpoints from the Guffran project.
-
-- UI: Based on `food-corpus-app` (HTML/CSS)
-- API: Uses endpoints and auth flow from `guffran-main` (login/register, auth/me, contributions, chunked uploads)
 
 ## Structure
 
